@@ -85,7 +85,7 @@ st.plotly_chart(fig_journals, use_container_width=True)
 
 # Most Recent Publications
 st.subheader("5 Most Recent Publications")
-recent_pubs = df_data.sort_values(by="Publication Date", ascending=True).head(5)
+recent_pubs = df_data.sort_values(by="Publication Date", ascending=False).head(5)
 st.dataframe(recent_pubs[["Title", "Authors", "Publication Date", "Journal", "Number of Citations"]])
 
 # Top Cited Papers in Past X Years
