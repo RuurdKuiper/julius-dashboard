@@ -6,7 +6,7 @@ import plotly.express as px
 st.set_page_config(layout="wide")
 
 # Load Data
-file_path = "Julius Center KPI Dashboard v2.xlsx"
+file_path = "Julius Center KPI Dashboard.xlsx"
 xls = pd.ExcelFile(file_path)
 df_data = pd.read_excel(xls, sheet_name="Data")
 
