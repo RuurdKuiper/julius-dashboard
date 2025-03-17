@@ -56,8 +56,9 @@ df_filtered = df_expanded[(df_expanded["Publication Year"] >= 2010) & (df_expand
 # Publications per Year per Department
 st.subheader("Publications Per Year Per Department")
 pub_per_year_dept = df_filtered.groupby(["Publication Year", "Department"]).size().reset_index(name="Number of Publications")
-fig_pub = px.line(pub_per_year_dept, x="Publication Year", y="Number of Publications", color="Department", title="Publications Per Year Per Department", color_discrete_map=department_colors)
+fig_pub = px.line(pub_per_year_dept, x="Publication Year", y="Number of Publications", color="Department", title="Publications Per Year Per Department", color_discrete_map=department_colors, labels={'x': None})
 fig_pub.update_layout(legend=dict(orientation="h", yanchor="top", xanchor="center", x=0.5))
+fig_pub.update_layout(xaxis_title=None)
 st.plotly_chart(fig_pub, use_container_width=True)
 
 # Citations per Year per Department
@@ -65,6 +66,7 @@ st.subheader("Citations Per Year Per Department")
 citations_per_year_dept = df_filtered.groupby(["Publication Year", "Department"])['Number of Citations'].sum().reset_index()
 fig_cit = px.line(citations_per_year_dept, x="Publication Year", y="Number of Citations", color="Department", title="Citations Per Year Per Department", color_discrete_map=department_colors)
 fig_cit.update_layout(legend=dict(orientation="h", yanchor="top", xanchor="center", x=0.5))
+fig_cit.update_layout(xaxis_title=None)
 st.plotly_chart(fig_cit, use_container_width=True)
 
 # Most Common Journals Per Department
@@ -81,6 +83,7 @@ journal_counts = journal_counts.sort_values(by="Count_Total", ascending=True)
 # Create horizontal bar chart
 fig_journals = px.bar(journal_counts, y="Journal", x="Count", color="Department", title="Top 10 Journals Published In, By Department", barmode="group", orientation="h", color_discrete_map=department_colors)
 fig_journals.update_layout(legend=dict(orientation="h", yanchor="top", xanchor="center", x=0.5))
+fig_journals.update_layout(xaxis_title=None)
 st.plotly_chart(fig_journals, use_container_width=True)
 
 # Most Recent Publications
