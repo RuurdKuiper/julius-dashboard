@@ -51,7 +51,7 @@ st.plotly_chart(fig_pub, use_container_width=True)
 
 # Citations per Year per Department
 st.subheader("Citations Per Year Per Department")
-citations_per_year_dept = df_filtered.drop_duplicates(subset=["Title"]).groupby(["Publication Year", "Department"])['Number of Citations'].sum().reset_index()
+citations_per_year_dept = df_filtered.groupby(["Publication Year", "Department"])['Number of Citations'].sum().reset_index()
 fig_cit = px.line(citations_per_year_dept, x="Publication Year", y="Number of Citations", color="Department", title="Citations Per Year Per Department")
 fig_cit.update_layout(legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="center", x=0.5))
 st.plotly_chart(fig_cit, use_container_width=True)
